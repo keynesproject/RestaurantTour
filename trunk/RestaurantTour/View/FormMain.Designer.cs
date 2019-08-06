@@ -46,7 +46,13 @@
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpBase = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDevice = new System.Windows.Forms.DataGridView();
+            this.dgvAttendance = new System.Windows.Forms.DataGridView();
+            this.columnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpSearchDateBase = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -72,15 +78,10 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.columnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExport = new System.Windows.Forms.Button();
             this.msMain.SuspendLayout();
             this.tlpBase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.tlpSearchDateBase.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -116,19 +117,19 @@
             // tsmiClearData
             // 
             this.tsmiClearData.Name = "tsmiClearData";
-            this.tsmiClearData.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClearData.Size = new System.Drawing.Size(143, 22);
             this.tsmiClearData.Text = "清除資料 (&C)";
             this.tsmiClearData.Click += new System.EventHandler(this.TsmiClearData_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(143, 22);
             this.tsmiClose.Text = "結束 (&X)";
             this.tsmiClose.Click += new System.EventHandler(this.TsmiClose_Click);
             // 
@@ -143,7 +144,7 @@
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
-            this.tsmiAbout.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAbout.Size = new System.Drawing.Size(119, 22);
             this.tsmiAbout.Text = "關於 (&A)";
             this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
@@ -152,7 +153,7 @@
             this.tlpBase.AutoSize = true;
             this.tlpBase.ColumnCount = 1;
             this.tlpBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpBase.Controls.Add(this.dgvDevice, 0, 1);
+            this.tlpBase.Controls.Add(this.dgvAttendance, 0, 1);
             this.tlpBase.Controls.Add(this.tlpSearchDateBase, 0, 0);
             this.tlpBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpBase.Location = new System.Drawing.Point(0, 24);
@@ -163,14 +164,14 @@
             this.tlpBase.Size = new System.Drawing.Size(834, 592);
             this.tlpBase.TabIndex = 1;
             // 
-            // dgvDevice
+            // dgvAttendance
             // 
-            this.dgvDevice.AllowDrop = true;
-            this.dgvDevice.AllowUserToAddRows = false;
-            this.dgvDevice.AllowUserToDeleteRows = false;
-            this.dgvDevice.AllowUserToResizeRows = false;
-            this.dgvDevice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvDevice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendance.AllowDrop = true;
+            this.dgvAttendance.AllowUserToAddRows = false;
+            this.dgvAttendance.AllowUserToDeleteRows = false;
+            this.dgvAttendance.AllowUserToResizeRows = false;
+            this.dgvAttendance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvAttendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F);
@@ -178,9 +179,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDevice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAttendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnID,
             this.columnName,
             this.columnPhone,
@@ -194,40 +195,113 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDevice.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDevice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDevice.Location = new System.Drawing.Point(3, 123);
-            this.dgvDevice.MultiSelect = false;
-            this.dgvDevice.Name = "dgvDevice";
-            this.dgvDevice.ReadOnly = true;
+            this.dgvAttendance.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAttendance.Location = new System.Drawing.Point(3, 123);
+            this.dgvAttendance.MultiSelect = false;
+            this.dgvAttendance.Name = "dgvAttendance";
+            this.dgvAttendance.ReadOnly = true;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvDevice.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvDevice.RowHeadersVisible = false;
-            this.dgvDevice.RowTemplate.Height = 24;
-            this.dgvDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevice.Size = new System.Drawing.Size(828, 466);
-            this.dgvDevice.TabIndex = 1;
-            this.dgvDevice.TabStop = false;
-            this.dgvDevice.DragDrop += new System.Windows.Forms.DragEventHandler(this.DgvDevice_DragDrop);
-            this.dgvDevice.DragEnter += new System.Windows.Forms.DragEventHandler(this.DgvDevice_DragEnter);
+            this.dgvAttendance.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvAttendance.RowHeadersVisible = false;
+            this.dgvAttendance.RowTemplate.Height = 24;
+            this.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendance.Size = new System.Drawing.Size(828, 466);
+            this.dgvAttendance.TabIndex = 1;
+            this.dgvAttendance.TabStop = false;
+            this.dgvAttendance.DragDrop += new System.Windows.Forms.DragEventHandler(this.DgvDevice_DragDrop);
+            this.dgvAttendance.DragEnter += new System.Windows.Forms.DragEventHandler(this.DgvDevice_DragEnter);
+            // 
+            // columnID
+            // 
+            this.columnID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnID.DataPropertyName = "Key";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.columnID.HeaderText = "人員編號";
+            this.columnID.MaxInputLength = 128;
+            this.columnID.MinimumWidth = 130;
+            this.columnID.Name = "columnID";
+            this.columnID.ReadOnly = true;
+            // 
+            // columnName
+            // 
+            this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnName.DataPropertyName = "ChineseName";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.columnName.HeaderText = "姓名";
+            this.columnName.MaxInputLength = 128;
+            this.columnName.MinimumWidth = 80;
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnPhone
+            // 
+            this.columnPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPhone.DataPropertyName = "Phone";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnPhone.DefaultCellStyle = dataGridViewCellStyle4;
+            this.columnPhone.HeaderText = "電話";
+            this.columnPhone.MaxInputLength = 128;
+            this.columnPhone.MinimumWidth = 80;
+            this.columnPhone.Name = "columnPhone";
+            this.columnPhone.ReadOnly = true;
+            // 
+            // columnCardNo
+            // 
+            this.columnCardNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCardNo.DataPropertyName = "CardNumber";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnCardNo.DefaultCellStyle = dataGridViewCellStyle5;
+            this.columnCardNo.HeaderText = "卡號";
+            this.columnCardNo.MaxInputLength = 4;
+            this.columnCardNo.MinimumWidth = 70;
+            this.columnCardNo.Name = "columnCardNo";
+            this.columnCardNo.ReadOnly = true;
+            // 
+            // columnDate
+            // 
+            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDate.DataPropertyName = "Date";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnDate.DefaultCellStyle = dataGridViewCellStyle6;
+            this.columnDate.HeaderText = "刷卡日期";
+            this.columnDate.MaxInputLength = 128;
+            this.columnDate.MinimumWidth = 110;
+            this.columnDate.Name = "columnDate";
+            this.columnDate.ReadOnly = true;
+            // 
+            // columnCount
+            // 
+            this.columnCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCount.DataPropertyName = "Count";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnCount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.columnCount.HeaderText = "刷卡次數";
+            this.columnCount.MaxInputLength = 10;
+            this.columnCount.MinimumWidth = 80;
+            this.columnCount.Name = "columnCount";
+            this.columnCount.ReadOnly = true;
             // 
             // tlpSearchDateBase
             // 
             this.tlpSearchDateBase.AutoSize = true;
-            this.tlpSearchDateBase.ColumnCount = 4;
+            this.tlpSearchDateBase.ColumnCount = 5;
             this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpSearchDateBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpSearchDateBase.Controls.Add(this.groupBox1, 2, 0);
             this.tlpSearchDateBase.Controls.Add(this.gbDisplay, 0, 0);
             this.tlpSearchDateBase.Controls.Add(this.groupBox2, 1, 0);
             this.tlpSearchDateBase.Controls.Add(this.btnSearch, 3, 0);
+            this.tlpSearchDateBase.Controls.Add(this.btnExport, 4, 0);
             this.tlpSearchDateBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpSearchDateBase.Location = new System.Drawing.Point(0, 0);
             this.tlpSearchDateBase.Margin = new System.Windows.Forms.Padding(0);
@@ -564,6 +638,8 @@
             this.btnSearch.Font = new System.Drawing.Font("Arial", 12F);
             this.btnSearch.Location = new System.Drawing.Point(723, 15);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(15);
+            this.btnSearch.MaximumSize = new System.Drawing.Size(96, 90);
+            this.btnSearch.MinimumSize = new System.Drawing.Size(96, 90);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(96, 90);
             this.btnSearch.TabIndex = 3;
@@ -571,77 +647,21 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
-            // columnID
+            // btnExport
             // 
-            this.columnID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnID.DataPropertyName = "Key";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.columnID.HeaderText = "人員編號";
-            this.columnID.MaxInputLength = 128;
-            this.columnID.MinimumWidth = 130;
-            this.columnID.Name = "columnID";
-            this.columnID.ReadOnly = true;
-            // 
-            // columnName
-            // 
-            this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnName.DataPropertyName = "ChineseName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.columnName.HeaderText = "姓名";
-            this.columnName.MaxInputLength = 128;
-            this.columnName.MinimumWidth = 80;
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnPhone
-            // 
-            this.columnPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPhone.DataPropertyName = "Phone";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnPhone.DefaultCellStyle = dataGridViewCellStyle4;
-            this.columnPhone.HeaderText = "電話";
-            this.columnPhone.MaxInputLength = 128;
-            this.columnPhone.MinimumWidth = 80;
-            this.columnPhone.Name = "columnPhone";
-            this.columnPhone.ReadOnly = true;
-            // 
-            // columnCardNo
-            // 
-            this.columnCardNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCardNo.DataPropertyName = "CardNumber";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnCardNo.DefaultCellStyle = dataGridViewCellStyle5;
-            this.columnCardNo.HeaderText = "卡號";
-            this.columnCardNo.MaxInputLength = 4;
-            this.columnCardNo.MinimumWidth = 70;
-            this.columnCardNo.Name = "columnCardNo";
-            this.columnCardNo.ReadOnly = true;
-            // 
-            // columnDate
-            // 
-            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDate.DataPropertyName = "Date";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnDate.DefaultCellStyle = dataGridViewCellStyle6;
-            this.columnDate.HeaderText = "刷卡日期";
-            this.columnDate.MaxInputLength = 128;
-            this.columnDate.MinimumWidth = 110;
-            this.columnDate.Name = "columnDate";
-            this.columnDate.ReadOnly = true;
-            // 
-            // columnCount
-            // 
-            this.columnCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCount.DataPropertyName = "Count";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnCount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.columnCount.HeaderText = "刷卡次數";
-            this.columnCount.MaxInputLength = 10;
-            this.columnCount.MinimumWidth = 80;
-            this.columnCount.Name = "columnCount";
-            this.columnCount.ReadOnly = true;
+            this.btnExport.AutoSize = true;
+            this.btnExport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnExport.Font = new System.Drawing.Font("Arial", 12F);
+            this.btnExport.Location = new System.Drawing.Point(849, 15);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(15);
+            this.btnExport.MaximumSize = new System.Drawing.Size(96, 90);
+            this.btnExport.MinimumSize = new System.Drawing.Size(96, 90);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(96, 90);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "匯出報表";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // FormMain
             // 
@@ -662,7 +682,7 @@
             this.msMain.PerformLayout();
             this.tlpBase.ResumeLayout(false);
             this.tlpBase.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             this.tlpSearchDateBase.ResumeLayout(false);
             this.tlpSearchDateBase.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -715,7 +735,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgvDevice;
+        private System.Windows.Forms.DataGridView dgvAttendance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnID;
@@ -724,6 +744,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCount;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

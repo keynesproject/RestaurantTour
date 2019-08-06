@@ -1,6 +1,7 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using RestaurantTour.Model;
 using RestaurantTour.Model.DataAccessObject;
 using RestaurantTour.View.Component;
 using System;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -364,11 +366,11 @@ namespace RestaurantTour.View
         {
             if(rdDisplayAll.Checked == true)
             {
-                this.dgvDevice.DataSource = DaoSQL.Instance.GetAll(dtpStart.Value, dtpEnd.Value, tbName.Text, tbPhone.Text, tbCardNo.Text);
+                this.dgvAttendance.DataSource = DaoSQL.Instance.GetAll(dtpStart.Value, dtpEnd.Value, tbName.Text, tbPhone.Text, tbCardNo.Text);
             }
             else
             {
-                this.dgvDevice.DataSource = DaoSQL.Instance.GetCount(dtpStart.Value, dtpEnd.Value, tbName.Text, tbPhone.Text, tbCardNo.Text);
+                this.dgvAttendance.DataSource = DaoSQL.Instance.GetCount(dtpStart.Value, dtpEnd.Value, tbName.Text, tbPhone.Text, tbCardNo.Text);
             }
         }
 
@@ -379,7 +381,6 @@ namespace RestaurantTour.View
 
         private void TsmiClearData_Click(object sender, EventArgs e)
         {
-            bool hadAttInfoDel = false;
             FormDeleteAttendance FormDA = new FormDeleteAttendance();
             DialogResult Ret = FormDA.ShowDialog();
             if (Ret != DialogResult.OK)
@@ -398,5 +399,12 @@ namespace RestaurantTour.View
 
             this.Cursor = Cursors.Default;
         }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            ExportExcel Et = new ExportExcel();
+            Et.GridToExcel("刷卡資料", dgvAttendance);
+        }
+
     }
 }

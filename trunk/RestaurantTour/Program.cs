@@ -43,17 +43,16 @@ namespace RestaurantTour
                     DialogResult Ret = DialogResult.Cancel;
 
                     //Login畫面;//
-                    Ret = ShowLoginForm();
-                    if (Ret != DialogResult.OK)
-                    {
-                        break;
-                    }
+                    //Ret = ShowLoginForm();
+                    //if (Ret != DialogResult.OK)
+                    //{
+                    //    break;
+                    //}
 
                     //登入成功，顯示主畫面;//
                     FormMain fMain = new FormMain();
                     fMain.BringToFront();
                     Ret = fMain.ShowDialog();
-                    //Application.Run(LpsMain);
 
                     //釋放主畫面資源;//
                     fMain.Close();

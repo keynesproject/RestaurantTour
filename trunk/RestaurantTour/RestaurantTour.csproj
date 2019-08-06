@@ -81,6 +81,7 @@
     <Compile Include="Model\Extension\ObjectExtension.cs" />
     <Compile Include="Model\Extension\StringBuilderExtension.cs" />
     <Compile Include="Model\Extension\StringExtension.cs" />
+    <Compile Include="Model\NPOIExportExcelHepler.cs" />
     <Compile Include="View\Component\MessageBoxEx.cs" />
     <Compile Include="View\Component\PageDataGridView.cs">
       <SubType>UserControl</SubType>

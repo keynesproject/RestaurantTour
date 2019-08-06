@@ -35,11 +35,11 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPW = new System.Windows.Forms.Label();
             this.tbPW = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.tbUser = new System.Windows.Forms.TextBox();
-            this.lblSplit1 = new System.Windows.Forms.Label();
             this.tlpBtn = new System.Windows.Forms.TableLayoutPanel();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblSplit1 = new System.Windows.Forms.Label();
             this.tlpBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMYP)).BeginInit();
             this.tlpLogin.SuspendLayout();
@@ -138,19 +138,6 @@
             this.tbPW.TabIndex = 1;
             this.tbPW.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbPW_KeyPress);
             // 
-            // btnLogin
-            // 
-            this.btnLogin.AutoSize = true;
-            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogin.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.Location = new System.Drawing.Point(48, 3);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(85, 45);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "登  入";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_MouseUp);
-            // 
             // tbUser
             // 
             this.tbUser.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,16 +148,6 @@
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(228, 24);
             this.tbUser.TabIndex = 0;
-            // 
-            // lblSplit1
-            // 
-            this.lblSplit1.AutoSize = true;
-            this.lblSplit1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSplit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSplit1.Location = new System.Drawing.Point(3, 132);
-            this.lblSplit1.Name = "lblSplit1";
-            this.lblSplit1.Size = new System.Drawing.Size(392, 3);
-            this.lblSplit1.TabIndex = 2;
             // 
             // tlpBtn
             // 
@@ -189,6 +166,19 @@
             this.tlpBtn.Size = new System.Drawing.Size(228, 51);
             this.tlpBtn.TabIndex = 3;
             // 
+            // btnLogin
+            // 
+            this.btnLogin.AutoSize = true;
+            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogin.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.Location = new System.Drawing.Point(48, 3);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(85, 45);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "登  入";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_MouseUp);
+            // 
             // btnClose
             // 
             this.btnClose.AutoSize = true;
@@ -201,6 +191,16 @@
             this.btnClose.Text = "離  開";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnClose_MouseUp);
+            // 
+            // lblSplit1
+            // 
+            this.lblSplit1.AutoSize = true;
+            this.lblSplit1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSplit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSplit1.Location = new System.Drawing.Point(3, 132);
+            this.lblSplit1.Name = "lblSplit1";
+            this.lblSplit1.Size = new System.Drawing.Size(392, 3);
+            this.lblSplit1.TabIndex = 2;
             // 
             // FormLogin
             // 
