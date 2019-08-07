@@ -63,36 +63,43 @@ namespace RestaurantTour.View
 
             this.Cursor = Cursors.AppStarting;
             
-            foreach (string file in FilesPath)
+            try
             {
-                if (CheckXls(file) == true) //檢查是否為EXCEL檔;//
+                foreach (string file in FilesPath)
                 {
-                    if (CheckPersonnelXlsData(file) == true)
+                    if (CheckXls(file) == true) //檢查是否為EXCEL檔;//
                     {
-                        if( ReadFromExcelFile(file) == true )                            
-                            MessageBoxEx.Show(this, string.Format("{0} 資料匯入成功。", file), "訊息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        isShowImportErrorMsg = false;
+                        if (CheckPersonnelXlsData(file) == true)
+                        {
+                            if (ReadFromExcelFile(file) == true)
+                                MessageBoxEx.Show(this, string.Format("{0} 資料匯入成功。", file), "訊息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            isShowImportErrorMsg = false;
+                        }
+                        else
+                        {
+                            MessageBoxEx.Show(this, string.Format("{0} 資料內容錯誤，沒包含必要欄位資訊!", file), "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            isShowImportErrorMsg = false;
+                        }
                     }
-                    else
+                    else if (CheckTxtFormat(file) == true)  //檢查TXT的資料內容正不正確;//
                     {
-                        MessageBoxEx.Show(this, string.Format("{0} 資料內容錯誤，沒包含必要欄位資訊!", file), "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBoxEx.Show(this, string.Format("{0} 資料匯入成功。", file), "訊息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         isShowImportErrorMsg = false;
                     }
                 }
-                else if(CheckTxtFormat(file) == true)  //檢查TXT的資料內容正不正確;//
-                {
-                    MessageBoxEx.Show(this, string.Format("{0} 資料匯入成功。", file), "訊息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isShowImportErrorMsg = false;
-                }
-            }  
 
-            if(isShowImportErrorMsg == true)
-            {
-                MessageBoxEx.Show(this, "不支援的檔案類型或格式!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (isShowImportErrorMsg == true)
+                {
+                    MessageBoxEx.Show(this, "不支援的檔案類型或格式或檔案被開啟中!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    ReloadData();
+                }
             }
-            else
+            catch(Exception ex)
             {
-                ReloadData();
+                MessageBoxEx.Show(this, ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.Cursor = Cursors.Default;
@@ -112,26 +119,23 @@ namespace RestaurantTour.View
         private bool CheckXls(string FilePath)
         {
             //default sFileName is not Exe or Dll File
-            bool isExcelFile = false;  
-            System.IO.FileStream fs = new System.IO.FileStream(FilePath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            System.IO.BinaryReader r = new System.IO.BinaryReader(fs);
+            bool isExcelFile = false;
+            System.IO.FileStream fs = null;
+            System.IO.BinaryReader r = null;
             string bx = "";
             byte buffer;
-            try
-            {
-                buffer = r.ReadByte();
-                bx = buffer.ToString();
-                buffer = r.ReadByte();
-                bx += buffer.ToString();
-                buffer = r.ReadByte();
-                bx += buffer.ToString();
-                buffer = r.ReadByte();
-                bx += buffer.ToString();
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine(exc.Message);                
-            }
+
+            fs = new System.IO.FileStream(FilePath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            r = new System.IO.BinaryReader(fs);
+            buffer = r.ReadByte();
+            bx = buffer.ToString();
+            buffer = r.ReadByte();
+            bx += buffer.ToString();
+            buffer = r.ReadByte();
+            bx += buffer.ToString();
+            buffer = r.ReadByte();
+            bx += buffer.ToString();
+
             r.Close();
             fs.Close();
 
@@ -272,6 +276,7 @@ namespace RestaurantTour.View
                                     break;
                                 case 3:
                                     content.EnglicshName = value.ToString();
+                                    content.Phone = value.ToString();
                                     break;
                                 case 4:
                                     content.CardNumber = value.ToString();
@@ -286,7 +291,7 @@ namespace RestaurantTour.View
                                     content.TEL = value.ToString();
                                     break;
                                 case 8:
-                                    content.Phone = value.ToString();
+                                    //content.Phone = value.ToString();
                                     break;
                             }
                         }
